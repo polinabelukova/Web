@@ -1,0 +1,35 @@
+﻿@page
+@model WebApplication4.Pages.Info_ar.IndexModel
+@{
+}
+<br>
+<h2>List of Article</h2>
+<a class='btn btn-primary btn-sm' href='/art/create'>New Article</a> @*кнопка для создания новой статьи*@
+<table class="table"> @* html tabl*@
+    <thead>
+        <tr>
+            <th>   ID   </th>
+            <th>      Title  </th>
+            <th>   Author    </th>
+            <th>Create Data</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listArticle) @*считываем список переменной*@
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.title</td>
+                <td>@item.author</td>
+                <td>@item.create_data</td>
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/art/edit?id=@item.id">Редактировать</a>
+                    <a class="btn btn-danger btn-sm" href="/art/Delete?id=@item.id">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>

@@ -1,0 +1,51 @@
+﻿@page
+@model WebApplication4.Pages.art.createModel
+@{
+}
+
+<br>
+<h2>Новая статья</h2>
+
+@if (Model.errorMessenge.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessenge</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+<form method="POST">     @* форма позволяющая отправлять данные нового клиента*@
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Название</label>
+        <div class="col-sm-6">    @* поле ввола имеет ширину в два раза привышающуб поле метки*@
+            <input type="text" class="form-control" name="title" value="@Model.articleInfo.title">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Автор</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="author" value="@Model.articleInfo.author">
+        </div>
+    </div>
+   @* если сообщ не явл пустым то отображаем эту информ пользователю*@
+    @if (Model.successMessenge.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>@Model.successMessenge</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Отмена</a>
+        </div>
+    </div>
+</form>
